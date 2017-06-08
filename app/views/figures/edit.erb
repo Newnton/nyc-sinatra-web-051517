@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>edit figure</title>
+  </head>
+  <body>
+    <form action="/figures/<%=@figure.id%>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <h1>Update <%=@figure.name%></h1>
+      <p>Name:<input type="text" name="figure[name]" id="figure_name" value="<%=@figure.name%>"><p>
+
+
+
+      <h1>Landmarks:</h1>
+      <%Landmark.all.each do |landmark|%>
+        <p><%=landmark.name%><input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id%>" value="<%=landmark.id%>"></p>
+      <%end%>
+      <p>New Landmark: <input type="text" name="landmark[name]" id="new_landmark"></p>
+      <p>New Landmark: <input type="text" name="landmark[year_completed]" id="new_landmark_year"></p>
+
+      <p>Meh, I'm done with this lab: <input type="text" name="figure[title_ids]" id="figure[title_ids][]"></p>
+
+      <input type="submit" value="Edit Figure">
+    </form>
+  </body>
+</html>
